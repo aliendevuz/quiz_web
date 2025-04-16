@@ -8,6 +8,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Golos", Arial, Helvetica, sans-serif;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
@@ -54,6 +57,7 @@ body {
   font-size: 1.2rem;
   border-radius: 10px;
   box-shadow: 0 0 10px #00000040;
+  cursor: pointer;
 }
 
 .test {
@@ -90,6 +94,7 @@ body {
   text-align: center;
   border-radius: 10px;
   transition: color 0.3s, background-color 0.3s;
+  cursor: pointer;
 }
 
 .gone {
@@ -128,6 +133,7 @@ body {
   font-size: 1.2rem;
   border-radius: 10px;
   box-shadow: 0 0 10px #00000040;
+  cursor: pointer;
 }
 
 .correct {
@@ -140,12 +146,80 @@ body {
   color: white; 
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 1.0;
+@media (max-width: 768px) {
+  .start {
+    padding: 24px;
+    gap: 24px;
+    border-radius: 16px;
   }
 
-  100% {
-    opacity: 0.0;
+  .start h1 {
+    font-size: 1.5rem;
+  }
+
+  .start button {
+    padding-inline: 24px;
+    padding-block: 12px;
+    font-size: 1rem;
+  }
+
+  .test {
+    padding-inline: 10px;
+  }
+
+  .question {
+    padding-block: 24px;
+    font-size: 1rem;
+    border-radius: 16px;
+  }
+
+  .variants {
+    padding: 24px 20px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .variant {
+    font-size: 1rem;
+    padding-block: 10px;
+    border-radius: 8px;
+  }
+
+  .result {
+    padding: 24px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+
+  .result h2 {
+    font-size: 1.4rem;
+  }
+
+  .result p {
+    font-size: 1rem;
+  }
+
+  .result button {
+    padding-inline: 24px;
+    padding-block: 12px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .start h1,
+  .result h2 {
+    font-size: 1.2rem;
+  }
+
+  .start button,
+  .result button {
+    font-size: 0.95rem;
+    padding-inline: 20px;
+    padding-block: 10px;
+  }
+
+  .variant {
+    font-size: 0.95rem;
   }
 }

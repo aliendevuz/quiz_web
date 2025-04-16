@@ -29,8 +29,16 @@ exitBtn.addEventListener('click', () => {
 
 async function loadData() {
   const [enRes, uzRes] = await Promise.all([fetch(enUrl), fetch(uzUrl)]);
-  enWords = await enRes.json();
-  uzWords = await uzRes.json();
+  let enData = await enRes.json();
+  let uzData = await uzRes.json();
+
+  // Ikkalasidan ham bir xil indekslar bo‘yicha 20 tasini tanlab olish
+  const indexes = Array.from({ length: enData.length }, (_, i) => i)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 20);
+
+  enWords = indexes.map(i => enData[i]);
+  uzWords = indexes.map(i => uzData[i]);
 
   if (enWords.length > 0 && uzWords.length > 0) {
     startScreen.classList.remove('gone');

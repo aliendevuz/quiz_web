@@ -24,7 +24,7 @@ startBtn.addEventListener('click', () => {
 });
 
 exitBtn.addEventListener('click', () => {
-  location.reload(); // Sahifani yangilash orqali testni qayta boshlash
+  location.reload();
 });
 
 async function loadData() {
@@ -32,7 +32,6 @@ async function loadData() {
   let enData = await enRes.json();
   let uzData = await uzRes.json();
 
-  // Ikkalasidan ham bir xil indekslar bo‘yicha 20 tasini tanlab olish
   const indexes = Array.from({ length: enData.length }, (_, i) => i)
     .sort(() => Math.random() - 0.5)
     .slice(0, 20);
@@ -54,7 +53,6 @@ function showQuestion() {
   const enWord = enWords[currentIndex].word;
   const correctAnswer = uzWords[currentIndex].word;
 
-  // Tasodifiy variantlar yasaymiz
   const allAnswers = new Set([correctAnswer]);
   while (allAnswers.size < 4) {
     const randomIndex = Math.floor(Math.random() * uzWords.length);
@@ -63,7 +61,6 @@ function showQuestion() {
 
   const shuffledAnswers = Array.from(allAnswers).sort(() => Math.random() - 0.5);
 
-  // Savol va variantlarni chiqarish
   questionEl.textContent = `${currentIndex + 1}. ${enWord}`;
   variantsEl.innerHTML = '';
 
@@ -84,11 +81,9 @@ function handleAnswerClick(element, isCorrect) {
     element.classList.add('incorrect');
   }
 
-  // Boshqa variantlarni bloklash
   const allVariants = document.querySelectorAll('.variant');
   allVariants.forEach(variant => variant.style.pointerEvents = 'none');
 
-  // Keyingi savolga o‘tish
   setTimeout(() => {
     currentIndex++;
     showQuestion();
